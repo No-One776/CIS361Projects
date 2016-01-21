@@ -7,22 +7,29 @@
 #include <stdlib.h>
 //#include <autoCeaserCipherBreaker.h>
 char rotate(char ch, int num);
-int main (){
-	char z = rotate('a', 25);
-	char a = rotate('z', 1);
-	char Z = rotate('A', 25);
-	char A = rotate('Z', 1);
-	printf("z: %c   a: %c  Z: %c   A: %c  \n", z, a, Z, A);
+void readFreq(float given[], char fname[]);
+
+int main (int argc, char* argv[]){
+	float given;
+	char *fname;
+	fname = "LetFreq.txt";
+	readFreq(&given, fname);
 	return EXIT_SUCCESS;
 }
 
 // Load array given with the letter frequencies for English from file LetFreq.txt
 void readFreq(float given[], char fname[]){
+	FILE *freq;
+        freq = fopen(fname, "r");
+        if (freq == NULL){
+                printf("File could not be opened\n");
+                exit(1);
+        }
 	char ch;
 	float num;
 	int position = 0;
-	while (fscanf(stdin, "%c ", &ch) != EOF){
-		fscanf(stdin, "%d", &num);
+	while (fscanf(freq, "%c ", &ch) != EOF){
+		fscanf(freq, "%f", &num);
 		given[position] = num;
 		position++;
 	}
