@@ -3,6 +3,7 @@
  *
  * Description: The program is an automatic Ceaser cipher breaker that uses a Letter Frequency file to then crack the code for Ceaser ciphers. Input is a encrypted file to be cracked and to display the decoded text once done.
  */
+
 #include <stdio.h>
 #include <stdlib.h>
 //#include <autoCeaserCipherBreaker.h>
@@ -12,8 +13,10 @@ void readFreq(float given[], char fname[]);
 int main (int argc, char* argv[]){
 	float given;
 	char *fname;
-	fname = "LetFreq.txt";
+	fname = "LetFreq.txt";	
 	readFreq(&given, fname);
+
+	//Cleanup before exit
 	return EXIT_SUCCESS;
 }
 
@@ -25,13 +28,12 @@ void readFreq(float given[], char fname[]){
                 printf("File could not be opened\n");
                 exit(1);
         }
+	given = malloc(26 * sizeof(char));
 	char ch;
 	float num;
 	int position = 0;
-	while (fscanf(freq, "%c ", &ch) != EOF){
-		fscanf(freq, "%f", &num);
-		given[position] = num;
-		position++;
+	while (fscanf(freq, "%c %f\n", &ch, &num) != EOF){
+		given[position++] = num;
 	}
 }
 
