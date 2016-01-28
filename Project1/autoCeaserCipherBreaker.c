@@ -6,16 +6,17 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-//#include <autoCeaserCipherBreaker.h>
-char rotate(char ch, int num);
-void readFreq(float given[], char fname[]);
+#include "autoCeaserCipherBreaker.h"
 
 int main (int argc, char* argv[]){
-	float given;
+	float given[26], found;
 	char *fname;
 	fname = "LetFreq.txt";	
-	readFreq(&given, fname);
-
+	readFreq(given, fname);
+	//calcFreq(&found, fname);	
+	printf("%f\n", given);
+	printf("Done... Exiting\n");
+	
 	//Cleanup before exit
 	return EXIT_SUCCESS;
 }
@@ -33,6 +34,7 @@ void readFreq(float given[], char fname[]){
 	float num;
 	int position = 0;
 	while (fscanf(freq, "%c %f\n", &ch, &num) != EOF){
+		printf("%f\n", num);
 		given[position++] = num;
 	}
 }

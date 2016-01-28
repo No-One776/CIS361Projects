@@ -1,3 +1,15 @@
-gcc autoCeaserCipherBreaker.c
+CC = gcc
+CFLAGS = -Wall
+DEPS = autoCeaserCipherBreaker.h
+OBJ = autoCeaserCipherBreaker.o
 
-./a.out
+%.o: %.c $(DEPS)
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+go: $(OBJ)
+	gcc $(CFLAGS) -o $@ $^
+
+test: breaker
+breaker: 
+	./breaker
+
