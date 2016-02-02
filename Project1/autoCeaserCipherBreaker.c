@@ -16,8 +16,8 @@ int main (int argc, char* argv[]){
 	readFreq(given, fname);
 	fname = "data.txt";
 	calcFreq(found, fname);	
-	
-	printf("Done... Exiting\n\n");
+	int key = findKey(given, found);
+	printf("%d Done... Exiting\n\n", key);
 	
 	//Cleanup before exit
 	return EXIT_SUCCESS;
@@ -78,13 +78,35 @@ char rotate(char ch, int num){
 // and remember which gives the smallest difference between the frequencies you
 // observed and the frequencies given. Return the key.
 int findKey(float given[], float found[]){
-	int key = -1;
-	
+	int key = -1, x, y;
+	float diff[26];
+	for (x = 0; x < 26; x++)
+		for (y=0; y < 26; y++)
+			diff[x] = given[y+x%26] - found[y];
+
+	float low = diff[0];
+	for (x = 1; x < 26; x++)
+		if (diff[x] < low){
+			key = x;
+			low = diff[x];
+		}
 	return key;
 }
 
 // Decrypt the encoded text in the input file using the key and display the decoded text
-void decrypt(int key){
+void decrypt(int key, char fname[]){
 	//Read file and use rotate(key) on each char to get the message
+	FILE *dec;
+        dec = fopen(fname, "r");
+        if (dec == NULL){
+                printf("File could not be opened\n");
+                exit(1);
+        }
+	
+	char ch;
+	while (fscanf(dec, "%c", &ch) !=EOF){
+		printf("%c", rotate(ch, key));
+	}
+
 }
 
