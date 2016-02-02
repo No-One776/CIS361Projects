@@ -6,16 +6,18 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include "autoCeaserCipherBreaker.h"
 
 int main (int argc, char* argv[]){
-	float given[26], found;
+	float given[26], found[26];
 	char *fname;
 	fname = "LetFreq.txt";	
 	readFreq(given, fname);
-	//calcFreq(&found, fname);	
-	printf("%f\n", given);
-	printf("Done... Exiting\n");
+	fname = "data.txt";
+	calcFreq(found, fname);	
+	
+	printf("Done... Exiting\n\n");
 	
 	//Cleanup before exit
 	return EXIT_SUCCESS;
@@ -29,20 +31,37 @@ void readFreq(float given[], char fname[]){
                 printf("File could not be opened\n");
                 exit(1);
         }
-	given = malloc(26 * sizeof(char));
+
 	char ch;
 	float num;
 	int position = 0;
 	while (fscanf(freq, "%c %f\n", &ch, &num) != EOF){
-		printf("%f\n", num);
 		given[position++] = num;
+		printf("%f\n", given[position-1]);
 	}
 }
 
 // Read the encoded text from an input file and accumulate the letter frequency
 // data for the encoded text. Store the frequency data in array found.
 void calcFreq(float found[], char fname[]){
+	FILE *freq;
+        freq = fopen(fname, "r");
+        if (freq == NULL){
+                printf("File could not be opened\n");
+                exit(1);
+        }
 
+        char ch;
+	int count[26] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int x, total = 0;
+        while (fscanf(freq, "%c", &ch) != EOF){
+                count[tolower(ch) - 'a'] += 1;
+		total++;
+        }
+	for (x = 0; x < 26; x++){
+		found[x] = (float) count[x] / total;
+		printf("%c: %f\n", x+'A', found[x]);
+	}
 }
 
 // Rotate the character in parameter ch down the alphabet for the number of
@@ -59,7 +78,7 @@ char rotate(char ch, int num){
 // and remember which gives the smallest difference between the frequencies you
 // observed and the frequencies given. Return the key.
 int findKey(float given[], float found[]){
-	int key;
+	int key = -1;
 	
 	return key;
 }

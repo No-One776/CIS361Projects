@@ -11,5 +11,5 @@ go: $(OBJ)
 
 test: breaker
 breaker: 
-	./breaker
+	./go
 
