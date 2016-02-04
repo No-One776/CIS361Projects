@@ -17,7 +17,8 @@ int main (int argc, char* argv[]){
 	fname = "data.txt";
 	calcFreq(found, fname);	
 	int key = findKey(given, found);
-	printf("%d Done... Exiting\n\n", key);
+	decrypt(key, fname);
+	printf("Key: %d \nDone... Exiting Now\n\n", key);
 	
 	//Cleanup before exit
 	return EXIT_SUCCESS;
@@ -35,10 +36,8 @@ void readFreq(float given[], char fname[]){
 	char ch;
 	float num;
 	int position = 0;
-	while (fscanf(freq, "%c %f\n", &ch, &num) != EOF){
+	while (fscanf(freq, "%c %f\n", &ch, &num) != EOF)
 		given[position++] = num;
-		printf("%f\n", given[position-1]);
-	}
 }
 
 // Read the encoded text from an input file and accumulate the letter frequency
@@ -58,10 +57,8 @@ void calcFreq(float found[], char fname[]){
                 count[tolower(ch) - 'a'] += 1;
 		total++;
         }
-	for (x = 0; x < 26; x++){
+	for (x = 0; x < 26; x++)
 		found[x] = (float) count[x] / total;
-		printf("%c: %f\n", x+'A', found[x]);
-	}
 }
 
 // Rotate the character in parameter ch down the alphabet for the number of
@@ -73,17 +70,24 @@ char rotate(char ch, int num){
 	return final;
 }
 
+// Square a float number
+float square(float s){
+	return s*s;
+}
+
 // Compare the data in array found with the frequency data in array given, looking
 // for a key that will give you the best match. To do this, try each of the 26 rotations,
 // and remember which gives the smallest difference between the frequencies you
 // observed and the frequencies given. Return the key.
 int findKey(float given[], float found[]){
-	int key = -1, x, y;
-	float diff[26];
+	// Calculate the sum of squares differences for each rotation
+	int key = 0, x, y;
+	float diff[26] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	for (x = 0; x < 26; x++)
 		for (y=0; y < 26; y++)
-			diff[x] = given[y+x%26] - found[y];
+			diff[x] += square(given[(y+x)%26] - found[y]);
 
+	// Find the lowest sum of squares difference
 	float low = diff[0];
 	for (x = 1; x < 26; x++)
 		if (diff[x] < low){
@@ -104,9 +108,10 @@ void decrypt(int key, char fname[]){
         }
 	
 	char ch;
-	while (fscanf(dec, "%c", &ch) !=EOF){
-		printf("%c", rotate(ch, key));
-	}
-
+	while (fscanf(dec, "%c", &ch) !=EOF)
+		if (isalpha(ch))
+			printf("%c", rotate(ch, key));
+		else
+			printf("%c", ch);
 }
 
