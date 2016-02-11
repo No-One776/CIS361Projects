@@ -6,19 +6,21 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <ctype.h>
 #include "autoCeaserCipherBreaker.h"
 
 int main (int argc, char* argv[]){
+	if (argc < 3){
+		printf("Use is prog LetFreqFile encyrptedFile");
+		return EXIT_FAILURE;
+	}
+
 	float given[26], found[26];
-	char *fname;
-	fname = "LetFreq.txt";	
-	readFreq(given, fname);
-	fname = "data.txt";
-	calcFreq(found, fname);	
+	readFreq(given, argv[1]);
+	calcFreq(found, argv[2]);	
 	int key = findKey(given, found);
-	decrypt(key, fname);
-	printf("Key: %d \nDone... Exiting Now\n\n", key);
+	decrypt(key, argv[2]);
 	
 	//Cleanup before exit
 	return EXIT_SUCCESS;
@@ -38,6 +40,8 @@ void readFreq(float given[], char fname[]){
 	int position = 0;
 	while (fscanf(freq, "%c %f\n", &ch, &num) != EOF)
 		given[position++] = num;
+
+	fclose(freq);
 }
 
 // Read the encoded text from an input file and accumulate the letter frequency
@@ -59,6 +63,8 @@ void calcFreq(float found[], char fname[]){
         }
 	for (x = 0; x < 26; x++)
 		found[x] = (float) count[x] / total;
+	
+	fclose(freq);
 }
 
 // Rotate the character in parameter ch down the alphabet for the number of
@@ -100,18 +106,26 @@ int findKey(float given[], float found[]){
 // Decrypt the encoded text in the input file using the key and display the decoded text
 void decrypt(int key, char fname[]){
 	//Read file and use rotate(key) on each char to get the message
-	FILE *dec;
+	FILE *dec; // , *write;
         dec = fopen(fname, "r");
-        if (dec == NULL){
-                printf("File could not be opened\n");
+	//char file[] = "decryptedData.txt";
+	//write = fopen(file, "w");
+        if (dec == NULL) {//|| write == NULL){
+               printf("File could not be opened\n");
                 exit(1);
         }
 	
-	char ch;
+	char ch, dch;
 	while (fscanf(dec, "%c", &ch) !=EOF)
-		if (isalpha(ch))
-			printf("%c", rotate(ch, key));
-		else
+		if (isalpha(ch)){
+			dch = rotate(ch, key);
+			printf("%c", dch);
+			//fprintf(write, "%c", dch);
+		}else{
 			printf("%c", ch);
+			//fprintf(write, "%c", ch);
+		}
+//	fclose(write);
+	fclose(dec);
 }
 
