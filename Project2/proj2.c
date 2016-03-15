@@ -20,20 +20,22 @@ double expdist (double mean) {
 
 int arrivingCustomers(){
 	// Use the data input & a rand to get how many customers arrive now
-	return 0;
+	int r = rand() % 100;
+	return r;
 }
 
 void simulation (int numOfTellers){
 	int time;
 	for (time = 1; time < WORK_DAY; time++){
-		// Check all the busy tellers & add non-busy to queue, decrement time for service
 		// Add a new round of arrivingCustomers to queue and assign as possible
+		// Check all the busy tellers & add non-busy to queue, decrement time for service
 	}	
 }
  
 int main () {
 	double t;                                     
-	t = expdist (AVG_SERVICE); 
-	printf("%f\n", t);
+	t = expdist (AVG_SERVICE);
+	int arrCust = arrivingCustomers(); 
+	printf("%f\t%d\n", t, arrCust);
 	return EXIT_SUCCESS;                       
 }
