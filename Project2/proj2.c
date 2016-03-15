@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <time.h>
 #include "stats.h"
 #include "queue.h"
 #define AVG_SERVICE 2.0
@@ -18,24 +19,45 @@ double expdist (double mean) {
 	return -mean * log(r);
 }
 
-int arrivingCustomers(){
-	// Use the data input & a rand to get how many customers arrive now
-	int r = rand() % 100;
-	return r;
+int arrivingCustomers(int data[]){
+	int r = rand() % 100; // Random between 0-99
+	return data[r];
+}
+
+void readArrivingCustData(int data[]) {
+	FILE *read;
+	read = fopen("proj2.dat", "r");
+	if (read == NULL) {
+		printf("File could not be opened\n");
+		exit(1);
+	}
+	int x, range = 0, count, arriving = 0;
+	while (fscanf(read, "%d %d", &arriving, &count) != EOF){
+		for (x = range; x < range + count; x++)
+			data[x] = arriving;
+		range += count;
+		printf("Data %d\n", data[x-1]);
+	} 
 }
 
 void simulation (int numOfTellers){
-	int time;
+	int time, data[100];
+	readArrivingCustData(data);
 	for (time = 1; time < WORK_DAY; time++){
-		// Add a new round of arrivingCustomers to queue and assign as possible
+		int a = arrivingCustomers(data);
+		//Get arriving customers (add to queue)
+		//Check busy tellers (Update statistics with those done & 
 		// Check all the busy tellers & add non-busy to queue, decrement time for service
 	}	
 }
  
 int main () {
+	int data[100];
+	readArrivingCustData(data);	
+	srand(time(NULL));  // Initialize random seed
 	double t;                                     
 	t = expdist (AVG_SERVICE);
-	int arrCust = arrivingCustomers(); 
+	int arrCust = arrivingCustomers(data); 
 	printf("%f\t%d\n", t, arrCust);
 	return EXIT_SUCCESS;                       
 }
