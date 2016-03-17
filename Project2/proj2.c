@@ -3,13 +3,13 @@
  *
  * Description: Bank teller simulation program that reads a data file giving customer frequency and reports statistics on wait for a varying number of tellers.
  */
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
 #include "stats.h"
 #include "queue.h"
+
 #define AVG_SERVICE 2.0
 #define WORK_DAY 480 // Minutes in a work day
 
@@ -41,10 +41,14 @@ void readArrivingCustData(int data[]) {
 }
 
 void simulation (int numOfTellers){
+	Queue waitline;
+	initialize(&waitline);
 	int time, data[100];
 	readArrivingCustData(data);
 	for (time = 1; time < WORK_DAY; time++){
 		int a = arrivingCustomers(data);
+		for (a = a; a > 0; a--)
+			push(a, &waitline);
 		//Get arriving customers (add to queue)
 		//Check busy tellers (Update statistics with those done & 
 		// Check all the busy tellers & add non-busy to queue, decrement time for service

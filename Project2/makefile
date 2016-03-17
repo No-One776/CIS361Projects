@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -lm
 DEPS = stats.h, queue.h
-OBJ = proj2.o
+OBJ = proj2.o queue.o stats.o
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)

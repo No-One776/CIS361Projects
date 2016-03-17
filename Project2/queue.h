@@ -14,14 +14,14 @@ struct elem {
 
 typedef struct elem	elem;
 
-struct queue {
+struct Queue {
 	int cnt;
 	elem *front;
 	elem *rear;
 };
 
-typedef struct queue 	queue;
-void initialize(queue *q);
-void push(data d, queue *q);
-data pop(queue *q);
-boolean empty(const queue *q);
+typedef struct Queue 	Queue;
+void initialize(Queue *q);
+void push(data d, Queue *q);
+data pop(Queue *q);
+boolean empty(const Queue *q);

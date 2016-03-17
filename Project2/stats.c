@@ -5,14 +5,15 @@
  */
 #include <stdlib.h>
 #include "stats.h"
-i
-struct custStats {
-	int totalNumCustServed = 0;
-	double totalCustWaitTime = 0;
-	double maxCustWaitTime = 0;
-	double avgWaitLineLength = 0;
-	int maxWaitLineLength = 0;
-}
+Stats custStats;
+//struct customerStats {
+//	int totalNumCustServed = 0;
+//	double totalCustWaitTime = 0;
+//	double maxCustWaitTime = 0;
+//	double avgWaitLineLength = 0;
+//	int maxWaitLineLength = 0;
+//} custStats;
+
 // Need to hold:
 // Total Number of Customers Served, 
 // Average length of time waiting in line
@@ -23,15 +24,15 @@ struct custStats {
 
 // Updates the average waiting line length and the max weight line length as necessary.
 void updateWaitLine(int length) {
-	avgWaitLineLength = (avgWaitLineLength + length) / 2.0;
-	if (length > maxWaitLineLength)
-		maxWaitLineLength = length;
+	custStats.avgWaitLineLength = (custStats.avgWaitLineLength + length) / 2.0;
+	if (length > custStats.maxWaitLineLength)
+		custStats.maxWaitLineLength = length;
 }
 
 double getAverageWaitLineLength() {
-	return avgWaitLineLength;
+	return custStats.avgWaitLineLength;
 }
 
 int getMaxWaitLineLength() {
-	return maxWaitLineLength;
+	return custStats.maxWaitLineLength;
 }

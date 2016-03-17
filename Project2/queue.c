@@ -1,13 +1,13 @@
 /* Linked list queue implementation */
 #include "queue.h"
 
-void initialize(queue *q) {
+void initialize(Queue *q) {
 	q->cnt = 0;
 	q->front = NULL;
 	q->rear = NULL;
 }
 
-void push(data d, queue *p){
+void push(data d, Queue *q){
 	elem *p;
 
 	p = malloc(sizeof(elem));
@@ -21,7 +21,7 @@ void push(data d, queue *p){
 	q->cnt++;
 }
 
-data pop(queue *q){
+data pop(Queue *q){
 	data d;
 	elem *p;
 	
@@ -33,6 +33,6 @@ data pop(queue *q){
 	return d;
 }
 
-boolean empty(const queue *q) {
+boolean empty(const Queue *q) {
 	return (boolean) (q->cnt == EMPTY);
 }
