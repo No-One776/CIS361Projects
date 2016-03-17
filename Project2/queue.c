@@ -36,3 +36,7 @@ data pop(Queue *q){
 boolean empty(const Queue *q) {
 	return (boolean) (q->cnt == EMPTY);
 }
+
+boolean full(const Queue *q) {
+	return (boolean) (q->cnt == FULL);
+}

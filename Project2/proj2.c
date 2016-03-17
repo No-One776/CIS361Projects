@@ -36,7 +36,6 @@ void readArrivingCustData(int data[]) {
 		for (x = range; x < range + count; x++)
 			data[x] = arriving;
 		range += count;
-		printf("Data %d\n", data[x-1]);
 	} 
 }
 
@@ -48,20 +47,17 @@ void simulation (int numOfTellers){
 	for (time = 1; time < WORK_DAY; time++){
 		int a = arrivingCustomers(data);
 		for (a = a; a > 0; a--)
-			push(a, &waitline);
-		//Get arriving customers (add to queue)
+			push(time, &waitline);
 		//Check busy tellers (Update statistics with those done & 
-		// Check all the busy tellers & add non-busy to queue, decrement time for service
+		
+// Check all the busy tellers & add non-busy to queue, decrement time for service
 	}	
 }
  
 int main () {
-	int data[100];
-	readArrivingCustData(data);	
 	srand(time(NULL));  // Initialize random seed
-	double t;                                     
-	t = expdist (AVG_SERVICE);
-	int arrCust = arrivingCustomers(data); 
-	printf("%f\t%d\n", t, arrCust);
+	int x;
+	for (x = 4; x < 8; x++) 
+		simulation(x);
 	return EXIT_SUCCESS;                       
 }

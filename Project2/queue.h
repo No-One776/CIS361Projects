@@ -3,8 +3,9 @@
 #include <stdlib.h>
 
 #define EMPTY 0
+#define FULL 1000
 
-typedef unsigned int		data;
+typedef int			data;
 typedef enum {false, true}	boolean;
 
 struct elem {
@@ -12,16 +13,17 @@ struct elem {
 	struct elem *next;
 };
 
-typedef struct elem	elem;
-
 struct Queue {
 	int cnt;
 	elem *front;
 	elem *rear;
 };
 
+typedef struct elem	elem;
 typedef struct Queue 	Queue;
+
 void initialize(Queue *q);
 void push(data d, Queue *q);
 data pop(Queue *q);
 boolean empty(const Queue *q);
+boolean full(const Queue *q);
