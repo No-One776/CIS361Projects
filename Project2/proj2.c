@@ -9,19 +9,15 @@
 #include <time.h>
 #include "stats.h"
 #include "queue.h"
-
 #define AVG_SERVICE 2.0
 #define WORK_DAY 480 // Minutes in a work day
 
 double expdist (double mean) {
-	double r = rand();
-	r /= RAND_MAX;
-	return -mean * log(r);
+	return -mean * log(rand()/RAND_MAX);
 }
 
 int arrivingCustomers(int data[]){
-	int r = rand() % 100; // Random between 0-99
-	return data[r];
+	return data[rand() % 100]; 
 }
 
 void readArrivingCustData(int data[]) {
@@ -42,15 +38,22 @@ void readArrivingCustData(int data[]) {
 void simulation (int numOfTellers){
 	Queue waitline;
 	initialize(&waitline);
-	int time, data[100];
+	int x, time, data[100];
+	double tellers[numOfTellers];
 	readArrivingCustData(data);
 	for (time = 1; time < WORK_DAY; time++){
 		int a = arrivingCustomers(data);
+		updateNumCustServed(a);
 		for (a = a; a > 0; a--)
 			push(time, &waitline);
-		//Check busy tellers (Update statistics with those done & 
-		
-// Check all the busy tellers & add non-busy to queue, decrement time for service
+		for (x = 0; x < numOfTellers; x++){
+			if((tellers[x] -=1) < 0){
+				int arTime = pop(&waitline);
+				updateCustWaitTime(((double)(time - arTime)) - tellers[x]);
+				tellers[x] += expdist(AVG_SERVICE);
+			}
+		}
+		updateWaitLine(waitline.cnt);
 	}	
 }
  

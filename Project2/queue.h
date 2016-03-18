@@ -13,14 +13,15 @@ struct elem {
 	struct elem *next;
 };
 
-struct Queue {
+typedef struct elem	elem;
+
+struct queue {
 	int cnt;
 	elem *front;
 	elem *rear;
 };
 
-typedef struct elem	elem;
-typedef struct Queue 	Queue;
+typedef struct queue 	Queue;
 
 void initialize(Queue *q);
 void push(data d, Queue *q);

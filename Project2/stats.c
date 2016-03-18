@@ -6,23 +6,25 @@
 #include <stdlib.h>
 #include "stats.h"
 Stats custStats;
-//struct customerStats {
-//	int totalNumCustServed = 0;
-//	double totalCustWaitTime = 0;
-//	double maxCustWaitTime = 0;
-//	double avgWaitLineLength = 0;
-//	int maxWaitLineLength = 0;
-//} custStats;
-
-// Need to hold:
 // Total Number of Customers Served, 
 // Average length of time waiting in line
 // Maximum length of time a customer spent in line 
 
-// Average waiting line length 
-// Maximum length of waiting line
+double getAvgWaitTime(){
+	return custStats.totalCustWaitTime / custStats.totalNumCustServed;
+}
 
-// Updates the average waiting line length and the max weight line length as necessary.
+double getMaxWaitTime(){
+	return custStats.maxCustWaitTime;
+}	
+
+void updateCustWaitTime(double time){
+	custStats.totalCustWaitTime += time;
+	if (time > custStats.maxCustWaitTime)
+		custStats.maxCustWaitTime = time;
+}
+
+// Updates the average waiting line length and the max wait line length
 void updateWaitLine(int length) {
 	custStats.avgWaitLineLength = (custStats.avgWaitLineLength + length) / 2.0;
 	if (length > custStats.maxWaitLineLength)
@@ -35,4 +37,8 @@ double getAverageWaitLineLength() {
 
 int getMaxWaitLineLength() {
 	return custStats.maxWaitLineLength;
+}
+
+void updateNumCustServed(int number){
+	custStats.totalNumCustServed += number;
 }
