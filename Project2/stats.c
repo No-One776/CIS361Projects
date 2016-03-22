@@ -6,9 +6,14 @@
 #include <stdlib.h>
 #include "stats.h"
 Stats custStats;
-// Total Number of Customers Served, 
-// Average length of time waiting in line
-// Maximum length of time a customer spent in line 
+
+void initializeStats(){
+	custStats.totalNumCustServed = 0;
+	custStats.totalCustWaitTime = 0;
+	custStats.maxCustWaitTime = 0;
+	custStats.avgWaitLineLength = 0;
+	custStats.maxWaitLineLength = 0;
+}
 
 double getAvgWaitTime(){
 	return custStats.totalCustWaitTime / custStats.totalNumCustServed;
@@ -41,4 +46,8 @@ int getMaxWaitLineLength() {
 
 void updateNumCustServed(int number){
 	custStats.totalNumCustServed += number;
+}
+
+int getTotalCustServed(){
+	return custStats.totalNumCustServed;
 }
