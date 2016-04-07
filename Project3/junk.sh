@@ -28,10 +28,19 @@ if [ $optionHelp = "y" ]; then
 fi
 
 #Move the files from the filename list to the junk directory, keeping the newest
+if [ $# == 0 ]; then # First check arguments where given
+	echo "No arguments given. Use 'junk --help' for more info."
+	exit
+fi
 files=${*: -1}
-while read f; do
-	mv -u $f ~/.junk/$f
-done < $files
+if [ -f $files ]; then
+	while read f; do
+		if [ -f $f ]; then
+			mv -u $f ~/.junk/$f
+			rm -f $f
+		fi
+	done < $files
+fi
 
 # List the current contents of the .junk directory
 if [ $optionL = "y" ]; then
