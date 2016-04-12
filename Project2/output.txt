@@ -1,0 +1,21 @@
+./simulation 
+
+Simulation started with 4 tellers:
+	Total Number of Customers Served: 1093
+	Wait Time => 		Average: 42.825	Max: 98.945
+	Wait Line Length => 	Average: 222.200	Max: 226
+
+Simulation started with 5 tellers:
+	Total Number of Customers Served: 1032
+	Wait Time => 		Average: 3.018	Max: 11.921
+	Wait Line Length => 	Average: 1.258	Max: 21
+
+Simulation started with 6 tellers:
+	Total Number of Customers Served: 1020
+	Wait Time => 		Average: 0.951	Max: 6.798
+	Wait Line Length => 	Average: 0.064	Max: 18
+
+Simulation started with 7 tellers:
+	Total Number of Customers Served: 1034
+	Wait Time => 		Average: 0.564	Max: 2.942
+	Wait Line Length => 	Average: 0.000	Max: 5

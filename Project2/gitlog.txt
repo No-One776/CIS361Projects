@@ -1,0 +1,137 @@
+commit 553577ee2439a039376e6388b862acae920a0327
+Author: Justin Rohr <justinr48@gmail.com>
+Date:   Tue Mar 22 17:01:59 2016 -0400
+
+    Simuation fully functional with printing statistics in a nice format.
+
+commit 6866bc0b79a296052ac2bc9c0d7931666abe0243
+Author: Justin Rohr <rohrj@mail.gvsu.edu>
+Date:   Tue Mar 22 15:56:05 2016 -0400
+
+    Fixed seg fault, working on simulation to figure out why stats are not working properly and possibly the check on busy tellers.
+
+commit c8b73b9ed844c3f8145ad5a76131144d70f4ce02
+Author: Justin Rohr <justinr48@gmail.com>
+Date:   Thu Mar 17 21:53:48 2016 -0400
+
+    Added the core functions to the simulation method with stats updating. Need to fix segmentation fault and print stats when done.
+
+commit ca0ce2e56fd6368746c64795b5e4c390cd718025
+Author: Justin Rohr <rohrj@mail.gvsu.edu>
+Date:   Thu Mar 17 12:02:49 2016 -0400
+
+    Working on the queue to be usable for the sim for the waitline and the tellers
+
+commit 76aee186350dbd75b4558cc4692f65d634413c9a
+Author: Justin Rohr <rohrj@mail.gvsu.edu>
+Date:   Thu Mar 17 11:07:51 2016 -0400
+
+    Fixed the makefile for compiling and the header files to get everything to work properly.
+
+commit 58eee84f4a029ae84bf053c33c4be008ae55074f
+Author: Justin Rohr <justinr48@gmail.com>
+Date:   Tue Mar 15 16:37:43 2016 -0400
+
+    Worked on stats, but started to focus on the simulator before as it will influence the stats section.
+
+commit ae75f51574ad8b76ff3553b5e42bfe8d8732f0a1
+Author: Justin Rohr <justinr48@gmail.com>
+Date:   Tue Mar 15 13:57:06 2016 -0400
+
+    Basic implementation for a linked list style queue implemented.
+
+commit a650833979615bb3045fd04960538d71855b3cee
+Author: Justin Rohr <justinr48@gmail.com>
+Date:   Thu Feb 18 17:11:59 2016 -0500
+
+    Started working on function definitions and figuring out how to best implement the project.
+
+commit 460d3523d3aadbdb084e112139b2bf8858190752
+Author: Justin Rohr <rohrj@mail.gvsu.edu>
+Date:   Thu Feb 18 15:51:27 2016 -0500
+
+    Project 2 initialization from project definition.
+
+commit dec723a8eabdb36a571c83b52c4e25d5928df6b9
+Author: Justin Rohr <rohrj@mail.gvsu.edu>
+Date:   Tue Feb 16 15:18:16 2016 -0500
+
+    Changed one of the data files to only be a paragraph per project specs.
+
+commit c2ae00a4c79e938e974aef2fafe44c2bd9f69f53
+Author: Justin Rohr <justinr48@gmail.com>
+Date:   Thu Feb 11 16:52:53 2016 -0500
+
+    Finished the program to read from the program arguments and updated the makefile to run the program and diff command itself.
+
+commit 725aa98283112d0a14742fd05285b8c44f83eb52
+Author: Justin Rohr <justinr48@gmail.com>
+Date:   Thu Feb 4 15:57:00 2016 -0500
+
+    Create data2.txt
+
+commit f2b1e8dff7662052ee9d5976f14cb162de73b16d
+Author: Justin Rohr <rohrj@mail.gvsu.edu>
+Date:   Thu Feb 4 15:50:41 2016 -0500
+
+    Fixed the sum of squares and the mod function so the findKey works and the decrypt skips over non-alpha characters.{
+
+commit 6b3169d32cbde75eb5fbb8651912cf3f2fbbd049
+Author: Justin Rohr <rohrj@mail.gvsu.edu>
+Date:   Tue Feb 2 16:22:02 2016 -0500
+
+    Note: use make testto run the program. findKey method should be done and so should the decrypt method with a few modifications
+
+commit 0bcc8bfbbf8dc6ca5b798f4c0a16a0ceb99302b2
+Author: Justin Rohr <rohrj@mail.gvsu.edu>
+Date:   Tue Feb 2 14:31:16 2016 -0500
+
+    Fixed the reading into the arrays and have the calcFreq function complete
+
+commit bcb0f0ba62ba58df7a86061dafb08970d44b0308
+Author: Justin Rohr <justinr48@gmail.com>
+Date:   Thu Jan 28 12:14:03 2016 -0500
+
+    Makefile and fixing nonproper editing
+
+commit b80622098bd3d8f2b9a5c3ca2f289534d17aa1ed
+Author: Justin Rohr <justinr48@gmail.com>
+Date:   Thu Jan 28 11:29:29 2016 -0500
+
+    Read Frequency function tested and working properly.
+
+commit b33a0d52f13082fb42c67dc41d75e498d11a9049
+Author: Justin Rohr <rohrj@mail.gvsu.edu>
+Date:   Thu Jan 21 18:34:23 2016 -0500
+
+    Worked on the reading of the LetFreq text file to file the array, but there is a seg fault issue as it is reading/doing something weird while reading
+
+commit 1f35992c57328cc9bbfb5936c57eaf08a012a207
+Author: Justin Rohr <rohrj@mail.gvsu.edu>
+Date:   Thu Jan 21 15:51:24 2016 -0500
+
+    Rotate function complete and tested
+
+commit 007674d127d0d616d7ff676fecc408d4f074ea30
+Author: Justin Rohr <rohrj@mail.gvsu.edu>
+Date:   Thu Jan 21 12:15:25 2016 -0500
+
+    Read Me description update.
+
+commit 7abd54b3ecb44da2b3e22f13855e97fc99386261
+Author: Justin Rohr <rohrj@mail.gvsu.edu>
+Date:   Thu Jan 21 12:13:44 2016 -0500
+
+    Added makefile, LetFreq.txt, Professors cipher.c, and added returns to the skeleton code in auto cipher.
+
+commit 7fe070d66a5e1190c88da3c117b5630c229bd8b6
+Author: Justin Rohr <rohrj@mail.gvsu.edu>
+Date:   Thu Jan 21 11:49:33 2016 -0500
+
+    Header file for function prototype declaration and initial setup of the main file with functions and comments
+
+commit 6e7a7a4cbd572335f5d223582bf2f8aafedd8cf4
+Author: Justin Rohr <rohrj@mail.gvsu.edu>
+Date:   Thu Jan 21 11:26:36 2016 -0500
+
+    Initialization

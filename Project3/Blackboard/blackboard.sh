@@ -59,9 +59,9 @@ report="Report.txt"
 for f in "$TMP/"*; do
     if [[ -d $f ]]; then
 	user=$(echo $f | sed "s/^$TMP\///")
-	echo $user >> $report
-	make -f makefile -C $f/ >> $report
-	make test -f makefile -C $f/ >> $report 
+	echo $user 
+	make -f makefile -C $f/ 
+	make test -f makefile -C $f/ 
     fi
-done
+done #>> $report
 
