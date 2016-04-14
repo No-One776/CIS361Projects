@@ -1,10 +1,6 @@
 #!/bin/bash
 # Author: Justin Rohr
-# Bash script reads the current directory and looks for files from blackboard. 
-# 1. Unzips a downloaded file into a data directory under the cwd named by the user 
-# 2. Create a sub-directory under the "Data" directory by each students id
-# 4. Test run each students program: building the program from a makefile and executing it against an input file - both reside in the CWD
-# 5. Save the log of the screen output from student testing into a file named report in the CWD
+# Bash script reads the given blackboard zip file, exports the files within, and runs the makefiles against them. 
 
 # Checks for file arguement and gives usage info if none
 if [ $# -ne 1 ]; then
@@ -26,7 +22,7 @@ prefix=$(zipinfo -1 $1 | cut -c 1-$k | uniq)
 
 #Create a directory based on the zip files name
 #TODO: Use user input?
-TMP=$(echo $1  | sed 's/.zip$//')
+TMP=$(echo $1 | sed 's/.zip$//')
 mkdir -p $TMP
 unzip -q $1 -d $TMP
 cd $TMP
@@ -54,8 +50,7 @@ for f in "${prefix}"*; do
 done
 cd ..
 
-#TODO Part 4 & 5
-report="Report.txt"
+# Run the make commands for each user.
 for f in "$TMP/"*; do
     if [[ -d $f ]]; then
 	user=$(echo $f | sed "s/^$TMP\///")
@@ -63,5 +58,5 @@ for f in "$TMP/"*; do
 	make -f makefile -C $f/ 
 	make test -f makefile -C $f/ 
     fi
-done #>> $report
+done #>> "Report.txt"
 
