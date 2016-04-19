@@ -1,13 +1,12 @@
 #!/bin/bash
-
-if [ $# -ne 1 -o -f "$*:0" ]; then
+# Check for proper arguments
+if [ $# -ne 1 ] || [ ! -f $* ]; then
 	echo -e Please give a file argument to read.
 	echo -e "\\nUsage: shiftLines [FILE]" 
 	exit 1
 fi
 
-echo $*
-
+# Read the file and create shift combinations
 while read line; do
 	set $line
 	first=""
