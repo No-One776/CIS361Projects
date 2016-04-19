@@ -8,4 +8,4 @@ test1:
 test2:
 	./cipher 2 5 ../../data.out ../../data.bak
 test3:
-	cat ../../data.bak
+	cat data.bak

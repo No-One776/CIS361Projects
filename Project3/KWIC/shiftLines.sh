@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $# -ne 1 -o -d "$*:0" ]; then
+if [ $# -ne 1 -o -f "$*:0" ]; then
 	echo -e Please give a file argument to read.
 	echo -e "\\nUsage: shiftLines [FILE]" 
 	exit 1

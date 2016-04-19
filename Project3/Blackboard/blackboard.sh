@@ -54,9 +54,11 @@ cd ..
 for f in "$TMP/"*; do
     if [[ -d $f ]]; then
 	user=$(echo $f | sed "s/^$TMP\///")
-	echo $user 
+	echo $user
+	cp data.txt $f 
 	make -f makefile -C $f/ 
-	make test -f makefile -C $f/ 
+	make test -f makefile -C $f/
+	cat "$f/data.bak" #Here because the makefile fails (discussed with you)
     fi
 done #>> "Report.txt"
 
