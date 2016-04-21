@@ -1,0 +1,21 @@
+[arch05:~/Documents/CIS361/Projects/Project3]$ ls
+Blackboard  fileList  junk.sh  KWIC  test2.txt	test.txt
+[arch05:~/Documents/CIS361/Projects/Project3]$ bash junk.sh -l -n fileList 
+Contents of .junk: 
+test2.txt test.txt
+
+Number of files: 2
+[arch05:~/Documents/CIS361/Projects/Project3]$ bash junk.sh --help
+Usage: junk [options] targetFileList
+
+The junk command takes the list of filenames and moves them to the users ~/.junk directory and it keeps the newest version of any duplicate files.
+
+Options include: -l -n --help
+     -l Lists the current contents of the .junk directory
+     -n Shows the number of files in the .junk directory and the amount of memory space consumed
+
+[arch05:~/Documents/CIS361/Projects/Project3]$ bash junk.sh
+No arguments given. Use 'junk --help' for more info.
+[arch05:~/Documents/CIS361/Projects/Project3]$ ls
+Blackboard  fileList  junkExample  junk.sh  KWIC
+

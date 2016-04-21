@@ -1,0 +1,5 @@
+[arch05:~/Documents/CIS361/Projects/Project3/Blackboard]$ ls
+blackboard.sh  cis361p4.zip  data.txt  makefile
+[arch05:~/Documents/CIS361/Projects/Project3/Blackboard]$ bash blackboard.sh cis361p4.zip 
+[arch05:~/Documents/CIS361/Projects/Project3/Blackboard]$ ls
+blackboard.sh  cis361p4  cis361p4.zip  data.txt  makefile  Report.txt
