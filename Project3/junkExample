@@ -5,6 +5,7 @@ Contents of .junk:
 test2.txt test.txt
 
 Number of files: 2
+File Space Used: 4.1K /home/rohrj/.junk
 [arch05:~/Documents/CIS361/Projects/Project3]$ bash junk.sh --help
 Usage: junk [options] targetFileList
 

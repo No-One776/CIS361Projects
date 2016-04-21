@@ -52,5 +52,5 @@ fi
 # Show the number of files and the memory space consumption
 if [ $optionN = "y" ]; then
 	echo "Number of files:" $(ls ~/.junk | wc -l)
-	#Report the Memory space consumed
+	echo "File Space Used:" $(du -sbh ~/.junk)
 fi
